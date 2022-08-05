@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
         EditText weight,editHeightFoot,editWeightInch;
         Button BMI;
         TextView txt;
+        LinearLayout layout;
 
-
+        layout = findViewById(R.id.linearlayoutID);
         weight = findViewById(R.id.editWeight);
         editHeightFoot = findViewById(R.id.editHeightFoot);
         editWeightInch = findViewById(R.id.editHeightInch);
@@ -40,10 +43,15 @@ public class MainActivity extends AppCompatActivity {
 
                 if (bmi > 25){
                     txt.setText("Over weight:"+String.format("%.2f",bmi));
+                    layout.setBackgroundColor(getResources().getColor(R.color.overWeight));
                 } else if (bmi < 18) {
                     txt.setText("Under Weight:"+String.format("%.2f",bmi));
+                    layout.setBackgroundColor(getResources().getColor(R.color.underWeight));
+
                 }else{
                     txt.setText("Healthy:"+String.format("%.2f",bmi));
+                    layout.setBackgroundColor(getResources().getColor(R.color.normal));
+
                 }
 
             }
